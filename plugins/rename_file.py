@@ -57,6 +57,11 @@ async def rename_doc(bot, message):
     media = mssg.reply_to_message
 
     
+    if Config.TIME_GAP:
+        time_gap = await timegap_check(message)
+        if time_gap:
+            return
+
     if media.empty:
         await message.reply_text('Why did you delete that 😕', True)
         return
@@ -74,6 +79,12 @@ async def rename_doc(bot, message):
         message_ids=message.reply_to_message.message_id,
         revoke=True
     )
+
+    if Config.TIME_GAP:
+        time_gap = await timegap_check(message)
+        if time_gap:
+            return
+        Config.TIME_GAP_STORE[message.from_user.id] = time.time()
     
     if message.from_user.id not in Config.BANNED_USERS:
         file_name = message.text
