@@ -80,14 +80,8 @@ async def rename_cb(bot, update):
     except:
         filename = "Not Available"
 
-    if update.from_user.id not in Config.AUTH_USERS:
-        if Config.TIME_GAP:
-        time_gap = await timegap_check(update)
-        if time_gap:
-            return
-        Config.TIME_GAP_STORE[update.from_user.id] = time.time()
-        else:
-            await bot.send_message(
+    if update.from_user.id not in Config.BANNED_USERS:
+        await bot.send_message(
         chat_id=update.chat.id,
         text="<b>File Name</b> : <code>{}</code> \n\nSelect the desired option below 😇".format(filename),
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="📝 RENAME 📝", callback_data="rename_button")],
