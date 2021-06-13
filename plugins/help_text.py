@@ -97,7 +97,6 @@ async def rename_cb(bot, update):
                 return
         else:
             Config.ADL_BOT_RQ[str(update.from_user.id)] = time.time()
-            return
     else:
         await bot.send_message(
         chat_id=update.chat.id,
