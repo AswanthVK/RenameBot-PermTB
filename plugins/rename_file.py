@@ -88,7 +88,8 @@ async def rename_doc(bot, message):
             text=script.DOWNLOAD_START,
             reply_to_message_id=message.message_id
             )
-        trace_msg = None
+        else:
+            trace_msg = None
         if Config.TRACE_CHANNEL:
             try:
                 media = await message.copy(chat_id=Config.TRACE_CHANNEL)
