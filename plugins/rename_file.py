@@ -6,7 +6,6 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 import os
 import time
-import random
 import asyncio
 import pyrogram
 
@@ -23,8 +22,6 @@ from pyrogram.errors import PeerIdInvalid, ChannelInvalid, FloodWait
 from pyrogram.emoji import *
 
 from plugins.helpers import progress_for_pyrogram, take_screen_shot
-from plugins.timegap_check import timegap_check
-from plugins.thumbnail_fixation import fix_thumb
 
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
@@ -62,11 +59,6 @@ async def rename_doc(bot, message):
     media = mssg.reply_to_message
 
     
-    if Config.TIME_GAP:
-        time_gap = await timegap_check(message)
-        if time_gap:
-            return
-
     if media.empty:
         await message.reply_text('Why did you delete that 😕', True)
         return
@@ -85,12 +77,6 @@ async def rename_doc(bot, message):
         revoke=True
     )
 
-    if Config.TIME_GAP:
-        time_gap = await timegap_check(message)
-        if time_gap:
-            return
-        Config.TIME_GAP_STORE[message.from_user.id] = time.time()
-    
     if message.from_user.id not in Config.BANNED_USERS:
         file_name = message.text
         description = script.CUSTOM_CAPTION_UL_FILE.format(newname=file_name)
