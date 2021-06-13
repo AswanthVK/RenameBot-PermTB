@@ -6,6 +6,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 import os
 import time
+import random
 import asyncio
 import pyrogram
 
@@ -87,7 +88,6 @@ async def rename_doc(bot, message):
             text=script.DOWNLOAD_START,
             reply_to_message_id=message.message_id
         )
-
     trace_msg = None
     if Config.TRACE_CHANNEL:
         try:
@@ -189,7 +189,7 @@ async def rename_doc(bot, message):
                 await sendmsg.delete()
                 await message.reply_text(script.AFTER_SUCCESSFUL_UPLOAD_MSG, quote=True)
                 if trace_msg:
-                    await trace_msg.edit(f'**User Name:** {m.from_user.mention(style="md")}\n\n**User Id:** `{m.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Uploaded Sucessfully {CHECK_MARK_BUTTON}')
+                    await trace_msg.edit(f'**User Name:** {message.from_user.mention(style="md")}\n\n**User Id:** `{message.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Uploaded Sucessfully')
                 
     else:
         await bot.send_message(
