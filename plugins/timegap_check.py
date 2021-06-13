@@ -1,6 +1,6 @@
 import time
 from sample_config import Config
-from helpers import TimeFormatter
+from plugins.helpers import TimeFormatter
 
 async def timegap_check(m):
     """Checking the time gap is completed or not 
