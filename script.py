@@ -13,6 +13,8 @@ class script(object):
     NO_THUMB = "No thumbnails found!"
     SAVED_RECVD_DOC_FILE = "File Downloaded Successfully 😎"
     CUSTOM_CAPTION_UL_FILE = " "
+    FREE_USER_LIMIT_Q_SZE = "1 request per {} minutes.Please wait {} seconds, I'm resting now."
+    CAPTION_TEXT = "<b>{}</b>"
     HELP_USER = """It's not that complicated😅
     
 1. Send me any Telegram File.
