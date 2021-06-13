@@ -8,6 +8,14 @@ import time
 import os
 import sqlite3
 import asyncio
+import re
+import json
+import math
+import shutil
+import random
+import ffmpeg
+import asyncio
+import requests
 
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
@@ -23,7 +31,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceRepl
 from pyrogram.errors import UserNotParticipant
 
 from plugins.rename_file import rename_doc
-
+from datetime import datetime
 
 @Client.on_message(filters.command(["help"]))
 def help_user(bot, update):
@@ -93,7 +101,7 @@ async def rename_cb(bot, update):
             present_time = round(Config.PROCESS_MAX_TIMEOUT-(current_time - previous_time))
             Config.ADL_BOT_RQ[str(update.from_user.id)] = time.time()
             if round(current_time - previous_time) < Config.PROCESS_MAX_TIMEOUT:
-                await bot.edit_message_text(chat_id=update.chat.id, text=Translation.FREE_USER_LIMIT_Q_SZE.format(process_max_timeout, present_time), disable_web_page_preview=True, parse_mode="html", message_id=fmsg.message_id)
+                await bot.edit_message_text(chat_id=update.chat.id, text=scrip.FREE_USER_LIMIT_Q_SZE.format(process_max_timeout, present_time), disable_web_page_preview=True, parse_mode="html", message_id=fmsg.message_id)
                 return
         else:
             Config.ADL_BOT_RQ[str(update.from_user.id)] = time.time()
