@@ -25,6 +25,8 @@ class Config(object):
     # chunk size that should be used with requests
     CHUNK_SIZE = 128
 
+    FORCE_SUB = os.environ.get("FORCE_SUB", "") if os.environ.get("FORCE_SUB", "") else None
+
     # Update channel for Force Subscribe
     UPDATE_CHANNEL = os.environ.get("UPDATE_CHANNEL", "")
 
