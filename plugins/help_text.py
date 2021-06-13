@@ -13,7 +13,6 @@ import json
 import math
 import shutil
 import random
-import ffmpeg
 import asyncio
 import requests
 
