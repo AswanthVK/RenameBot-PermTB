@@ -72,7 +72,9 @@ def upgrade(bot, update):
     
 @Client.on_message(filters.private & (filters.document | filters.video | filters.audio | filters.voice | filters.video_note))
 async def rename_cb(bot, update):
- 
+    logger.info(update.from_user.id)
+    fmsg = await update.reply_text(text=script.CHECKING_LINK, quote=True)
+    
     file = update.document or update.video or update.audio or update.voice or update.video_note
     try:
         filename = file.file_name
