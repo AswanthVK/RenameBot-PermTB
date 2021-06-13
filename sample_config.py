@@ -31,7 +31,7 @@ class Config(object):
     UPDATE_CHANNEL = os.environ.get("UPDATE_CHANNEL", "")
 
     # set timeout for subprocess
-    PROCESS_MAX_TIMEOUT = str(os.environ.get("TIME_LIMIT"))
+    PROCESS_MAX_TIMEOUT = int(os.environ.get("TIME_LIMIT"))
     
     # dict to hold the ReQuest queue
     ADL_BOT_RQ = {}
