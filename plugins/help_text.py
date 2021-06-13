@@ -72,8 +72,6 @@ def upgrade(bot, update):
     
 @Client.on_message(filters.private & (filters.document | filters.video | filters.audio | filters.voice | filters.video_note))
 async def rename_cb(bot, update):
-    logger.info(update.from_user.id)
-    fmsg = await update.reply_text(text=script.CHECKING_LINK, quote=True)
     
     file = update.document or update.video or update.audio or update.voice or update.video_note
     try:
@@ -82,19 +80,21 @@ async def rename_cb(bot, update):
         filename = "Not Available"
 
     if update.from_user.id not in Config.AUTH_USERS:
-        # restrict free users from sending more links
-        if str(update.from_user.id) in Config.ADL_BOT_RQ:
-            current_time = time.time()
-            previous_time = Config.ADL_BOT_RQ[str(update.from_user.id)]
-            process_max_timeout = round(Config.PROCESS_MAX_TIMEOUT/60)
-            present_time = round(Config.PROCESS_MAX_TIMEOUT-(current_time - previous_time))
-            Config.ADL_BOT_RQ[str(update.from_user.id)] = time.time()
-            if round(current_time - previous_time) < Config.PROCESS_MAX_TIMEOUT:
-                await bot.edit_message_text(chat_id=update.chat.id, text=script.FREE_USER_LIMIT_Q_SZE.format(process_max_timeout, present_time), disable_web_page_preview=True, parse_mode="html", message_id=fmsg.message_id)
-                return
+        ex = {}
+
+        LIMIT = 100
+        if m.chat.id in ex:
+            then = ex[m.chat.id]
+            left = round(then - time.time())
+            if left > 0:
+                reply(f"wait {left} seconds")
+                raise StopPropagation
+            else:
+                then = time.time() + LIMIT
         else:
-            Config.ADL_BOT_RQ[str(update.from_user.id)] = time.time()    
-            await bot.send_message(
+            ex[m.chat.id] = time.time() + LIMIT
+    
+    await bot.send_message(
         chat_id=update.chat.id,
         text="<b>File Name</b> : <code>{}</code> \n\nSelect the desired option below 😇".format(filename),
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="📝 RENAME 📝", callback_data="rename_button")],
