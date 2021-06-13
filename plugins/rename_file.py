@@ -6,6 +6,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 import os
 import time
+import random
 import asyncio
 import pyrogram
 
@@ -18,8 +19,12 @@ from script import script
 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
+from pyrogram.errors import PeerIdInvalid, ChannelInvalid, FloodWait
+from pyrogram.emoji import *
 
-from plugins.helpers import progress_for_pyrogram
+from plugins.helpers import progress_for_pyrogram, take_screen_shot
+from plugins.timegap_check import timegap_check
+from plugins.thumbnail_fixation import fix_thumb
 
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
