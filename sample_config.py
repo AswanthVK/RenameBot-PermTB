@@ -1,6 +1,4 @@
 import os
-import logging
-logger = logging.getLogger(__name__)
 
 class Config(object):
 
@@ -27,9 +25,6 @@ class Config(object):
     # chunk size that should be used with requests
     CHUNK_SIZE = 128
 
-    # Database url
-    DB_URI = os.environ.get("DATABASE_URL", "")
-
     # Update channel for Force Subscribe
     UPDATE_CHANNEL = os.environ.get("UPDATE_CHANNEL", "")
 
@@ -38,3 +33,6 @@ class Config(object):
     
     # dict to hold the ReQuest queue
     ADL_BOT_RQ = {}
+
+    # Database url
+    DB_URI = os.environ.get("DATABASE_URL", "")
