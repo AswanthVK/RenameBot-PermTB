@@ -88,12 +88,12 @@ async def rename_doc(bot, message):
             text=script.DOWNLOAD_START,
             reply_to_message_id=message.message_id
             )
-        else:
-            trace_msg = None
+   
+        trace_msg = None
         if Config.TRACE_CHANNEL:
             try:
                 media = await message.copy(chat_id=Config.TRACE_CHANNEL)
-                trace_msg = await media.reply_text(f'**User Name:** {message.from_user.mention(style="md")}\n\n**User Id:** `{message.from_user.id}`\n\n**New File Name:** `{file_name}`\n\n**Status:** Downloading....')
+                trace_msg = await media.reply_text('**User Name:** {message.from_user.mention(style="md")}\n\n**User Id:** `{message.from_user.id}`\n\n**New File Name:** `{file_name}`\n\n**Status:** Downloading....')
             except PeerIdInvalid:
                 logger.warning("Give the correct Channel or Group ID.")
             except ChannelInvalid:
@@ -190,7 +190,7 @@ async def rename_doc(bot, message):
                 await sendmsg.delete()
                 await message.reply_text(script.AFTER_SUCCESSFUL_UPLOAD_MSG, quote=True)
                 if trace_msg:
-                    await trace_msg.edit(f'**User Name:** {message.from_user.mention(style="md")}\n\n**User Id:** `{message.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Uploaded Sucessfully')
+                    await trace_msg.edit('**User Name:** {message.from_user.mention(style="md")}\n\n**User Id:** `{message.from_user.id}`\n\n**New File Name:** `{file_name}`\n\n**Status:** Uploaded Sucessfully')
                 
     else:
         await bot.send_message(
