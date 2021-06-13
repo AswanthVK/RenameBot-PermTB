@@ -15,6 +15,7 @@ class script(object):
     CUSTOM_CAPTION_UL_FILE = " "
     FREE_USER_LIMIT_Q_SZE = "1 request per {} minutes.Please wait {} seconds, I'm resting now."
     CAPTION_TEXT = "<b>{}</b>"
+    CHECKING_LINK = "Analysing..."
     HELP_USER = """It's not that complicated😅
     
 1. Send me any Telegram File.
