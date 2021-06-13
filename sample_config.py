@@ -30,6 +30,12 @@ class Config(object):
     # Database url
     DB_URI = os.environ.get("DATABASE_URL", "")
 
+    # set timeout for subprocess
+    PROCESS_MAX_TIMEOUT = int(os.environ.get("TIME_LIMIT"))
+    
+    # dict to hold the ReQuest queue
+    ADL_BOT_RQ = {}
+
     FORCE_SUB = os.environ.get("FORCE_SUB", "") if os.environ.get("FORCE_SUB", "") else None
     try:
         TIME_GAP = int(os.environ.get("TIME_GAP", "")) if os.environ.get("TIME_GAP", "") else None
