@@ -93,9 +93,7 @@ async def rename_cb(bot, update):
                 await bot.edit_message_text(chat_id=update.chat.id, text=script.FREE_USER_LIMIT_Q_SZE.format(process_max_timeout, present_time), disable_web_page_preview=True, parse_mode="html", message_id=fmsg.message_id)
                 return
         else:
-            Config.ADL_BOT_RQ[str(update.from_user.id)] = time.time()
-            return
-        else:     
+            Config.ADL_BOT_RQ[str(update.from_user.id)] = time.time()    
             await bot.send_message(
         chat_id=update.chat.id,
         text="<b>File Name</b> : <code>{}</code> \n\nSelect the desired option below 😇".format(filename),
