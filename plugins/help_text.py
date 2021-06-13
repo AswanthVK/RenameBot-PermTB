@@ -28,9 +28,10 @@ import pyrogram
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
 from pyrogram.errors import UserNotParticipant
+from datetime import datetime
 
 from plugins.rename_file import rename_doc
-from datetime import datetime
+from plugins.timegap_check import timegap_check
 
 @Client.on_message(filters.command(["help"]))
 def help_user(bot, update):
@@ -80,21 +81,13 @@ async def rename_cb(bot, update):
         filename = "Not Available"
 
     if update.from_user.id not in Config.AUTH_USERS:
-        ex = {}
-
-        LIMIT = 100
-        if update.chat.id in ex:
-            then = ex[update.chat.id]
-            left = round(then - time.time())
-            if left > 0:
-                reply(f"wait {left} seconds")
-                raise StopPropagation
-            else:
-                then = time.time() + LIMIT
+        if Config.TIME_GAP:
+        time_gap = await timegap_check(update)
+        if time_gap:
+            return
+        Config.TIME_GAP_STORE[update.from_user.id] = time.time()
         else:
-            ex[update.chat.id] = time.time() + LIMIT
-    
-    await bot.send_message(
+            await bot.send_message(
         chat_id=update.chat.id,
         text="<b>File Name</b> : <code>{}</code> \n\nSelect the desired option below 😇".format(filename),
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="📝 RENAME 📝", callback_data="rename_button")],
