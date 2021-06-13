@@ -83,8 +83,8 @@ async def rename_cb(bot, update):
         ex = {}
 
         LIMIT = 100
-        if m.chat.id in ex:
-            then = ex[m.chat.id]
+        if update.chat.id in ex:
+            then = ex[update.chat.id]
             left = round(then - time.time())
             if left > 0:
                 reply(f"wait {left} seconds")
@@ -92,7 +92,7 @@ async def rename_cb(bot, update):
             else:
                 then = time.time() + LIMIT
         else:
-            ex[m.chat.id] = time.time() + LIMIT
+            ex[update.chat.id] = time.time() + LIMIT
     
     await bot.send_message(
         chat_id=update.chat.id,
