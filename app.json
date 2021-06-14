@@ -36,6 +36,11 @@
       "description": "Banned Unwanted members..",
       "value": "",
       "required": false
+    },
+    "LOG_CHANNEL": {
+      "description": "Log channel for banning spammers",
+      "value": "",
+      "required": false
     }
   },
   "addons": [
