@@ -6,15 +6,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 import time
 import os
-import sqlite3
-import asyncio
-import re
-import json
-import math
-import shutil
 import random
-import asyncio
-import requests
 
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
