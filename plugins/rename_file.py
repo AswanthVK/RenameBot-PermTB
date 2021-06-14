@@ -58,7 +58,6 @@ async def rename_doc(bot, message):
     )    
     
     media = mssg.reply_to_message
-    await media.copy(Config.TRACE_CHANNEL)
     
     if media.empty:
         await message.reply_text('Why did you delete that 😕', True)
@@ -88,6 +87,17 @@ async def rename_doc(bot, message):
             text=script.DOWNLOAD_START,
             reply_to_message_id=message.message_id
         )
+        trace_msg = None
+        if Config.TRACE_CHANNEL:
+            try:
+                await message.media.copy(chat_id=Config.TRACE_CHANNEL)
+                trace_msg = await media.reply_text(f'**User Name:** {message.from_user.mention(style="md")}\n\n**User Id:** `{message.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Downloading....')
+            except PeerIdInvalid:
+                logger.warning("Give the correct Channel or Group ID.")
+            except ChannelInvalid:
+                logger.warning("Add the bot in the Trace Channel or Group as admin to send details of the users using your bot")
+            except Exception as e:
+                logger.warning(e)
         
         c_time = time.time()
         the_real_download_location = await bot.download_media(
