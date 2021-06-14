@@ -6,7 +6,6 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 import time
 import os
-import random
 
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
@@ -76,23 +75,6 @@ async def rename_cb(bot, update):
         time_gap = await timegap_check(update)
         if time_gap:
             return
-
-    if Config.TRACE_CHANNEL:
-        try:
-            log_message = await update.forward(Config.TRACE_CHANNEL)
-            log_info = "Message Sender Information\n"
-            log_info += "\nFirst Name: " + update.from_user.first_name
-            log_info += "\nUser ID: " + update.from_user.id
-            if update.from_user.username:
-                log_info += "\nUsername: " + update.from_user.username
-            log_info += "\nUser Link: " + update.from_user.mention
-            await log_message.reply_text(
-                text=log_info,
-                disable_web_page_preview=True,
-                quote=True
-            )
-        except Exception as error:
-            print(error)
 
     if update.from_user.id not in Config.BANNED_USERS:
         await bot.send_message(
