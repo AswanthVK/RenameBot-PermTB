@@ -175,6 +175,8 @@ async def rename_doc(bot, message):
             try:
                 os.remove(new_file_name)
                 os.remove(thumb_image_path)
+                if trace_msg:
+                    await trace_msg.edit(f'**User Name:** {message.from_user.mention(style="md")}\n\n**User Id:** `{message.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Uploaded Sucessfully')          
             except:
                 pass  
             try:
@@ -187,8 +189,6 @@ async def rename_doc(bot, message):
             except:
                 await sendmsg.delete()
                 await message.reply_text(script.AFTER_SUCCESSFUL_UPLOAD_MSG, quote=True)    
-                if trace_msg:
-                    await trace_msg.edit(f'**User Name:** {message.from_user.mention(style="md")}\n\n**User Id:** `{message.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Uploaded Sucessfully')          
     else:
         await bot.send_message(
             chat_id=message.chat.id,
