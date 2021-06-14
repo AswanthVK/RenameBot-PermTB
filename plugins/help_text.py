@@ -80,6 +80,11 @@ async def rename_cb(bot, update):
     except:
         filename = "Not Available"
 
+    if Config.TIME_GAP:
+        time_gap = await timegap_check(update)
+        if time_gap:
+            return
+
     if update.from_user.id not in Config.BANNED_USERS:
         await bot.send_message(
         chat_id=update.chat.id,
@@ -90,6 +95,12 @@ async def rename_cb(bot, update):
         reply_to_message_id=update.message_id,
         disable_web_page_preview=True   
     )   
+
+    if Config.TIME_GAP:
+        time_gap = await timegap_check(update)
+        if time_gap:
+            return
+        Config.TIME_GAP_STORE[update.from_user.id] = time.time()
 
 
 async def cancel_extract(bot, update):
