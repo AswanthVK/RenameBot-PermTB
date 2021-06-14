@@ -46,5 +46,5 @@ class Config(object):
     TRACE_CHANNEL = int(os.environ.get("TRACE_CHANNEL", ""))
 
     # Log channel for banning spammers
-    LOG_CHANNEL = os.environ.get("LOG_CHANNEL", "")
+    LOG_CHANNEL = str(os.environ.get("LOG_CHANNEL", ""))
 
