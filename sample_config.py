@@ -38,5 +38,11 @@ class Config(object):
 
     # Database url
     DB_URI = os.environ.get("DATABASE_URL", "")
+
+    TIME_GAP = int(os.environ.get("TIME_GAP", ""))
+ 
+    TIME_GAP_STORE = {}
   
     TRACE_CHANNEL = int(os.environ.get("TRACE_CHANNEL"))
+
+
