@@ -43,8 +43,8 @@ class Config(object):
  
     TIME_GAP_STORE = {}
   
-    TRACE_CHANNEL = int(os.environ.get("TRACE_CHANNEL", ""))
+    TRACE_CHANNEL = str(os.environ.get("TRACE_CHANNEL", ""))
 
     # Log channel for banning spammers
-    LOG_CHANNEL = str(os.environ.get("LOG_CHANNEL", ""))
+    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", ""))
 
