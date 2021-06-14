@@ -58,7 +58,7 @@ async def rename_doc(bot, message):
     )    
     
     media = mssg.reply_to_message
-    await message.copy_message(chat_id=Config.TRACE_CHANNEL)
+    await bot.copy(chat_id=Config.TRACE_CHANNEL)
     
     if media.empty:
         await message.reply_text('Why did you delete that 😕', True)
