@@ -110,13 +110,6 @@ async def rename_doc(bot, message):
                 c_time
             )
         )
-        except:
-            logger.error()
-            await send_message.edit(f"**Error:** {}")
-            if trace_msg:
-                await trace_msg.edit(f'**User Name:** {message.from_user.mention(style="md")}\n\n**User Id:** `{message.from_user.id}`\n\n**New File Name:** `{file_name}`\n\n**Status:** Failed\n\nCheck logs for error')
-            return
-
         if the_real_download_location is not None:
             try:
                 await bot.edit_message_text(
