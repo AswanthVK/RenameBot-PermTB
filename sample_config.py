@@ -33,7 +33,7 @@ class Config(object):
     # Database url
     DB_URI = os.environ.get("DATABASE_URL", "")
 
-    TIME_GAP = os.environ.get("TIME_GAP", "")
+    TIME_GAP = int(os.environ.get("TIME_GAP", ""))
  
     TIME_GAP_STORE = {}
   
