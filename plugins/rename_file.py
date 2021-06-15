@@ -145,8 +145,6 @@ async def rename_doc(bot, message):
                     m = await bot.get_messages(message.chat.id, mes.msg_id)
                     await m.download(file_name=thumb_image_path)
                     thumb_image_path = thumb_image_path
-                except:
-                    thumb_image_path = None      
                 else:
                     try:
                         thumb_image_path = await take_screen_shot(new_file_location, os.path.dirname(os.path.abspath(new_file_location)), random.randint(0, duration - 1))
