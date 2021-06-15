@@ -30,12 +30,6 @@ class Config(object):
     # Update channel for Force Subscribe
     UPDATE_CHANNEL = os.environ.get("UPDATE_CHANNEL", "")
 
-    # set timeout for subprocess
-    PROCESS_MAX_TIMEOUT = int(os.environ.get("TIME_LIMIT"))
-    
-    # dict to hold the ReQuest queue
-    ADL_BOT_RQ = {}
-
     # Database url
     DB_URI = os.environ.get("DATABASE_URL", "")
 
