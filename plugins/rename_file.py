@@ -149,10 +149,10 @@ async def rename_doc(bot, message):
                     thumb_image_path = None      
                 else:
                     try:
-                        thumbnail_image_path = await take_screen_shot(new_file_location, os.path.dirname(os.path.abspath(new_file_location)), random.randint(0, duration - 1))
+                        thumb_image_path = await take_screen_shot(new_file_location, os.path.dirname(os.path.abspath(new_file_location)), random.randint(0, duration - 1))
                     except Exception as e:
                         logger.error(e)
-                        thumbnail_image_path = None              
+                        thumb_image_path = None              
             else:
                 width = 0
                 height = 0
