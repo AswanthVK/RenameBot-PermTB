@@ -17,4 +17,4 @@ async def cb_handler(bot, update):
 
     elif "cancel" in update.data:
         await update.message.delete()
-        await cancel_progress(bot, update.message.sendmsg)
+        await cancel_progress(bot, update.message)
