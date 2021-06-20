@@ -28,15 +28,15 @@ class Config(object):
     FORCE_SUB = os.environ.get("FORCE_SUB", "") if os.environ.get("FORCE_SUB", "") else None
 
     # Update channel for Force Subscribe
-    UPDATE_CHANNEL = os.environ.get("UPDATE_CHANNEL", false)
+    UPDATE_CHANNEL = os.environ.get("UPDATE_CHANNEL", "")
 
     # Database url
     DB_URI = os.environ.get("DATABASE_URL", "")
 
-    TIME_GAP = int(os.environ.get("TIME_GAP", flase))
+    TIME_GAP = os.environ.get("TIME_GAP", "")
  
     TIME_GAP_STORE = {}
   
-    TRACE_CHANNEL = int(os.environ.get("TRACE_CHANNEL", flase))
+    TRACE_CHANNEL = int(os.environ.get("TRACE_CHANNEL", ""))
 
     
