@@ -85,6 +85,7 @@ async def rename_doc(bot, message):
         sendmsg = await bot.send_message(
             chat_id=message.chat.id,
             text=script.DOWNLOAD_START,
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Cancel", callback_data="cancel")]]),
             reply_to_message_id=message.message_id
         )
         trace_msg = None
