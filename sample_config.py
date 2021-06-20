@@ -37,6 +37,6 @@ class Config(object):
  
     TIME_GAP_STORE = {}
   
-    TRACE_CHANNEL = int(os.environ.get("TRACE_CHANNEL", ""))
+    TRACE_CHANNEL = os.environ.get("TRACE_CHANNEL", "")
 
     
