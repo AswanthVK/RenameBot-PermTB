@@ -205,5 +205,11 @@ async def rename_doc(bot, message):
             reply_to_message_id=message.message_id
         )
 
+async def cancel_progress(bot, update):
+    
+    await bot.sendmsg.stop_message(
+        chat_id=update.chat.id,
+        text="Process Cancelled 🙃",
+    )
 
 
