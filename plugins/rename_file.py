@@ -87,13 +87,6 @@ async def rename_doc(bot, message):
             text=script.DOWNLOAD_START,
             reply_to_message_id=message.message_id
         )
-        else:
-            sendmsg = await bot.stop_message(
-                chat_id=message.chat.id,
-                text=script.DOWNLOAD_START,
-                reply_markup=([Button.inline('❌CANCEL❌', str(message.sender_id))]),
-                reply_to_message_id=message.message_id
-            )
         trace_msg = None
         if Config.TRACE_CHANNEL:
             try:
