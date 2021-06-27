@@ -5,7 +5,13 @@ numpy
 Pillow
 pyrogram==1.0.7
 requests
-tgcrypto
 sqlalchemy==1.3.23
 psycopg2-binary
 pyromod==1.5
+TgCrypto
+motor
+dnspython
+aiofiles
+psutil
+pyromod
+humanfriendly
