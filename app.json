@@ -43,10 +43,12 @@
     },
     "BROADCAST_AS_COPY": {
       "description": "Broadcast as Copy or with Forward Tag. Value should be True/False."
+      "value": "",
       "required": false
     },
     "MONGODB_URI": {
       "description": "MongoDB Database URI for Saving UserID for Broadcast. Tutorial: https://www.youtube.com/watch?v=aXlF80Cn7iU"
+      "value": "",
       "required": false
     },
     "LOG_CHANNEL": {
