@@ -30,6 +30,8 @@ class Config(object):
     # Update channel for Force Subscribe
     UPDATE_CHANNEL = os.environ.get("UPDATE_CHANNEL", "")
 
+    SESSION_NAME = os.environ.get("SESSION_NAME", "NewRename_Bot")
+  
     # Database url
     DB_URI = os.environ.get("DATABASE_URL", "")
 
