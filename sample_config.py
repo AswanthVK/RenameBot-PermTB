@@ -39,4 +39,11 @@ class Config(object):
   
     TRACE_CHANNEL = os.environ.get("TRACE_CHANNEL", "")
 
+    MONGODB_URI = os.environ.get("MONGODB_URI", False)
+
+    BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", False))
+  
+    MAX_VIDEOS = int(os.environ.get("MAX_VIDEOS", 5))
+     
+
     
